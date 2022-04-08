@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  -
+    let results = [
+      {
+        "beverages_name": "BudLighr",
+        "beverages_size": "Small",
+        "beverages_cost": 5
+      },
+      {
+        "beverages_name": "corona",
+        "beverages_size": "Medium",
+        "beverages_cost": 7
+      },
+      {
+        "beverages_name": "kingfisher",
+        "beverages_size": "Large",
+        "beverages_cost": 10
+      },                   
+    ]
+  div(class= "container-fluid")
+    div(class = "row")
+      each item,index in results
+        div(class= "col-sm-2", onclick=`buy(${index})`) #{item.beverages_name}
+        div(class= "col-sm-2", onclick=`buy(${index})`) #{item.beverages_size}
+        div(class= "col-sm-2", onclick=`buy(${index})`) #{item.beverages_cost}
+
+  script.
+    function buy(itemNum){
+      alert(`You purchased item ${itemNum+1}`)
+    }
