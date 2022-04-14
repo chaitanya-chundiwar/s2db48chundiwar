@@ -9,14 +9,13 @@ mongoose = require('mongoose');
 mongoose.connect(connectionString,
   { useNewUrlParser: true, useUnifiedTopology: true });
 
-var Costume = require("./models/costume");
+  var Costume = require("./models/costume");
 var Food = require("./models/food");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var beveragesRouter = require('./routes/beverages');
-var foodsRouter = require('./routes/food');
 var addmodsRouter = require('./routes/addmods');
-var selectorRouter = require('./routes/selector');
+var selectorsRouter = require('./routes/selectors');
 var resourceRouter = require('./routes/resource');
 var app = express();
 
@@ -35,16 +34,16 @@ app.use('/users', usersRouter);
 app.use('/beverages', beveragesRouter);
 app.use('/foods', foodsRouter);
 app.use('/addmods', addmodsRouter);
-app.use('/selector', selectorRouter)
+app.use('/selectors', selectorsRouter);
 app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -55,6 +54,7 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
 
 /// We can seed the collection if needed on server start
 async function recreateDB() {

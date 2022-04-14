@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
-const mobileSchema = mongoose.Schema({
-    mobile_brand: String,
-    mobile_color: String,
-    mobile_cost: Number
+const foodSchema = mongoose.Schema({
+    food_brand: String,
+    food_color: String,
+    food_cost: Number
 })
-module.exports = mongoose.model("Mobile", mobileSchema)
+module.exports = mongoose.model("food", foodSchema)
