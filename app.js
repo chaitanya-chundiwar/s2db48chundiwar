@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const connectionString = "mongodb+srv://demo:demo@cluster0.wuvl3.mongodb.net/learnMongo?retryWrites=true&w=majority";
+const connectionString = "mongodb+srv://chaitanya833:Myjob279@cluster0.bg6sd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 mongoose = require('mongoose');
 mongoose.connect(connectionString,
   { useNewUrlParser: true, useUnifiedTopology: true });
@@ -13,6 +13,7 @@ var Costume = require("./models/costume");
 var Food = require("./models/food");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var beveragesRouter = require('./routes/beverages');
 var foodsRouter = require('./routes/foods');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/beverages', beveragesRouter);
 app.use('/foods', foodsRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter)
