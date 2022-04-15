@@ -14,9 +14,9 @@ var Food = require("./models/food");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var beveragesRouter = require('./routes/beverages');
-var foodsRouter = require('./routes/food');
+var foodRouter = require('./routes/food');
 var addmodsRouter = require('./routes/addmods');
-var selectorsRouter = require('./routes/selectors');
+//var selectorsRouter = require('./routes/selectors');
 var resourceRouter = require('./routes/resource');
 var app = express();
 
@@ -32,19 +32,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/food', foodRouter);
 app.use('/beverages', beveragesRouter);
-app.use('/food', foodsRouter);
 app.use('/addmods', addmodsRouter);
-app.use('/selectors', selectorsRouter);
+//app.use('/selectors', selectorsRouter);
 app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -56,8 +56,7 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-
-/// We can seed the collection if needed on server start
+//// We can seed the collection if needed on server start
 async function recreateDB() {
   // Delete everything
   await Costume.deleteMany();
@@ -80,38 +79,39 @@ async function recreateDB() {
     console.log("Third object saved in Costume")
   });
 
-  let instance4 = new Costume({ costume_type: "Scarlett Witch", size: 'large', cost: 22 });
+  let instance4 = new Costume({ costume_type: "Sfoodlett Witch", size: 'large', cost: 22 });
   instance4.save(function (err, doc) {
     if (err) return console.error(err);
     console.log("Fourth object saved in Costume")
   });
 
+
 // Delete everything in Food
-  await Food.deleteMany();
+await Food.deleteMany();
 
-  let instance5 = new Food({ food_brand: "Dominos", food_color: 'Blue', food_cost: 20 });
-  instance5.save(function (err, doc) {
-    if (err) return console.error(err);
-    console.log("First object saved in Food")
-  });
+let instance5 = new Food({ food_brand: "Dominos", food_color: 'Blue', food_cost: 20 });
+instance5.save(function (err, doc) {
+  if (err) return console.error(err);
+  console.log("First object saved in Food")
+});
 
-  let instance6 = new Food({ food_brand: "KFC", food_color: 'Red', food_cost: 15 });
-  instance6.save(function (err, doc) {
-    if (err) return console.error(err);
-    console.log("Second object saved in Food")
-  });
+let instance6 = new Food({ food_brand: "KFC", food_color: 'Red', food_cost: 15 });
+instance6.save(function (err, doc) {
+  if (err) return console.error(err);
+  console.log("Second object saved in Food")
+});
 
-  let instance7 = new Food({ food_brand: "Taco bells", food_color: 'Yellow', food_cost: 17 });
-  instance7.save(function (err, doc) {
-    if (err) return console.error(err);
-    console.log("Third object saved in Food")
-  });
+let instance7 = new Food({ food_brand: "Taco bells", food_color: 'Yellow', food_cost: 17 });
+instance7.save(function (err, doc) {
+  if (err) return console.error(err);
+  console.log("Third object saved in Food")
+});
 
-  let instance8 = new Food({ food_brand: "Sonic", food_color: 'Violet', food_cost: 18 });
-  instance8.save(function (err, doc) {
-    if (err) return console.error(err);
-    console.log("Fourth object saved in Food")
-  });
+let instance8 = new Food({ food_brand: "Sonic", food_color: 'Violet', food_cost: 18 });
+instance8.save(function (err, doc) {
+  if (err) return console.error(err);
+  console.log("Fourth object saved in Food")
+});
 }
 let reseed = true;
 if (reseed) { recreateDB(); }
