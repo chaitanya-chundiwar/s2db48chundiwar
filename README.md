@@ -1,4 +1,4 @@
-# s2wb48chundiwar
+# s2db48chundiwar
 Learning Pug
 
 [Server at](https://s2db48chundiwar.herokuapp.com/)
