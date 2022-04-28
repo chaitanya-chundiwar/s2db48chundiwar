@@ -3,4 +3,4 @@ Learning Pug
 
 [Server at](https://s2db48chundiwar.herokuapp.com/)
 
-My class beverages with attributes beverages_name (string), beverages_Size (string), and beverages_cost (number).
+My class beverages with attributes food_brand (string), food_color (string), and food_cost (number).
